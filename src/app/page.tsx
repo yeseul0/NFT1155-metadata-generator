@@ -15,7 +15,7 @@ export default function Home() {
     e.preventDefault();
 
     // 고유 token_id 생성 (0번부터 시작)
-    const newTokenId = submittedData.length;
+    const newTokenId = submittedData.length + 1; // 1번부터 시작하도록 수정
 
     // 입력된 데이터를 JSON 형태로 생성
     const metadata = {
@@ -28,8 +28,8 @@ export default function Home() {
     setGeneratedJson(JSON.stringify(metadata, null, 2));
     setTokenId(newTokenId);
 
-    // URL 생성 (.json 확장자 포함)
-    const newUrl = `/metadata/${newTokenId}.json`;
+    // URL 생성 (올바른 API 경로로 수정)
+    const newUrl = `/api/metadata/${newTokenId}`;
 
     // 데이터 저장
     setSubmittedData((prevData) => [
@@ -127,6 +127,7 @@ export default function Home() {
                 <a href={data.url} target="_blank" rel="noopener noreferrer" style={styles.link}>
                   Token {data.id} - {data.url}
                 </a>
+                
               </li>
             ))}
           </ul>
@@ -193,6 +194,16 @@ const styles: Record<string, React.CSSProperties> = {
     cursor: 'pointer',
     transition: 'background-color 0.3s',
   },
+  viewButton: {
+    marginLeft: '10px',
+    padding: '5px 10px',
+    fontSize: '14px',
+    backgroundColor: '#28a745',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
   alert: {
     marginTop: '20px',
     padding: '10px',
@@ -237,6 +248,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
   listItem: {
     marginBottom: '10px',
+    display: 'flex',
+    alignItems: 'center',
   },
   link: {
     color: '#007BFF',
