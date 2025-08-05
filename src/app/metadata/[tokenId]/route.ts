@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
 export async function GET(
-  request: NextRequest,
+  request: Request,
   { params }: { params: { tokenId: string } }
 ) {
   const tokenId = params.tokenId;
