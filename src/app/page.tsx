@@ -72,6 +72,12 @@ export default function Home() {
   
   return (
     <div style={styles.container}>
+      {/* 컨트랙트 주소 정보 - 필요할 때 주석 해제하세요 */}
+      <div style={styles.contractAddressContainer}>
+        <p style={styles.contractAddressLabel}>컨트랙트 주소:</p>
+        <p style={styles.contractAddress}>아직 배포전!!!</p>
+      </div>
+      
       <h1 style={styles.title}>NFT Metadata Generator</h1>
       <form onSubmit={handleSubmit} style={styles.form}>
         <div style={styles.formGroup}>
@@ -132,9 +138,6 @@ export default function Home() {
           </ul>
         </div>
       )}
-      <div>
-        <a href="/metadata/0.json">메타데이터 보기</a>
-      </div>
     </div>
     
   );
@@ -150,6 +153,29 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#f0f4f8',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  // 컨트랙트 주소 관련 스타일 추가
+  contractAddressContainer: {
+    backgroundColor: '#e9f5ff',
+    padding: '10px 15px',
+    borderRadius: '5px',
+    marginBottom: '15px',
+    display: 'flex',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center',
+    border: '1px solid #b3d7ff',
+  },
+  contractAddressLabel: {
+    fontSize: '14px',
+    fontWeight: 'bold' as 'bold',
+    color: '#0056b3',
+    marginBottom: '5px',
+  },
+  contractAddress: {
+    fontSize: '16px',
+    fontFamily: 'monospace',
+    wordBreak: 'break-all' as 'break-all',
+    color: '#0056b3',
   },
   title: {
     textAlign: 'center' as 'center', // 명시적 리터럴 타입 지정
