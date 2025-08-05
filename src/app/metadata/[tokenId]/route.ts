@@ -1,12 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
 export async function GET(
-  request: Request,
-  context: { params: { tokenId: string } }
+  request: NextRequest,
+  { params }: { params: { tokenId: string } }
 ) {
-  const tokenId = context.params.tokenId;
+  const tokenId = params.tokenId;
   
   try {
     // .json 확장자가 없는 경우 추가
