@@ -127,13 +127,16 @@ export default function Home() {
                 <a href={data.url} target="_blank" rel="noopener noreferrer" style={styles.link}>
                   Token {data.id} - {data.url}
                 </a>
-                
               </li>
             ))}
           </ul>
         </div>
       )}
+      <div>
+        <a href="/metadata/0.json">메타데이터 보기</a>
+      </div>
     </div>
+    
   );
 }
 
