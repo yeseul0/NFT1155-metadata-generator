@@ -4,9 +4,9 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: { tokenId: string } }
+  context: { params: { tokenId: string } }
 ) {
-  const tokenId = params.tokenId;
+  const tokenId = context.params.tokenId;
   
   try {
     // .json 확장자가 없는 경우 추가
