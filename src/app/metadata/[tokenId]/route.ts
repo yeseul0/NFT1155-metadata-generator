@@ -1,37 +1,19 @@
-// app/metadata/[tokenId].json/route.js
-import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+// app/metadata/[tokenId]/route.ts
 
-export async function GET(request, { params }) {
-  const { tokenId } = params;
+import { NextResponse } from 'next/server';
+
+export async function GET(
+  request: Request,
+  { params }: { params: { tokenId: string } }
+) {
+  const tokenId = params.tokenId;
   
-  try {
-    const filePath = path.join(process.cwd(), 'data', 'metadata', `${tokenId}.json`);
-    
-    if (!fs.existsSync(filePath)) {
-      return new NextResponse(JSON.stringify({ error: 'Token not found' }), {
-        status: 404,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-    }
-    
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    
-    // Content-Type 헤더를 application/json으로 설정하여 JSON 파일로 응답
-    return new NextResponse(fileContent, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  } catch (error) {
-    return new NextResponse(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  }
+  // 토큰 ID에 따라 다른 메타데이터 반환
+  const metadata = {
+    name: `NFT #${tokenId}`,
+    description: `This is NFT number ${tokenId}`,
+    image: `https://nft-metadata-generator.vercel.app/images/${tokenId}.png`,
+  };
+
+  return NextResponse.json(metadata);
 }
