@@ -80,7 +80,7 @@ export async function GET(request, context) {
           // 필수 필드가 없는 경우 추가
           if (!parsedMetadata.name) parsedMetadata.name = `NFT #${tokenId}`;
           if (!parsedMetadata.description) parsedMetadata.description = `This is NFT with token ID ${tokenId}`;
-          if (!parsedMetadata.image) parsedMetadata.image = `https://img.reservoir.tools/images/v2/base/khnv7QtJSsXhx7z5lxeoZ%2F0UzDinft2Nxc7bSzrtG7cdjwga57gi4LydIeO1GfuCybsHMIUPLDStwl2rwzyaA3ZwDAtiuSfANKIZeCy5Mku10kaksDoRiIWig31xE3DVw48fCFMrueu3l2wCL%2FabT2HoHl4ol5%2FSqd6I5kKwo7Acvo0rPTLYSj%2FjxiOgGQ0t?width=250`;
+          if (!parsedMetadata.image) parsedMetadata.image = `https://png.pngtree.com/png-vector/20231226/ourmid…er-one-1-written-with-gold-png-image_11383483.png`;
         }
         
         // JSON 파일 응답 반환
@@ -92,7 +92,7 @@ export async function GET(request, context) {
         const defaultMetadata = {
           name: `NFT #${tokenId}`,
           description: `Invalid metadata format for token ID ${tokenId}`,
-          image: `https://img.reservoir.tools/images/v2/base/khnv7QtJSsXhx7z5lxeoZ%2F0UzDinft2Nxc7bSzrtG7cdjwga57gi4LydIeO1GfuCybsHMIUPLDStwl2rwzyaA3ZwDAtiuSfANKIZeCy5Mku10kaksDoRiIWig31xE3DVw48fCFMrueu3l2wCL%2FabT2HoHl4ol5%2FSqd6I5kKwo7Acvo0rPTLYSj%2FjxiOgGQ0t?width=250`,
+          image: `	data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…7iyNsMbIoxZjW2HQDRI3n0v8AFCF2q8GAyRrbjUhCEJRD/9k=`,
           error: "Original metadata was not valid JSON"
         };
         
@@ -104,7 +104,7 @@ export async function GET(request, context) {
       const defaultMetadata = {
         name: `NFT #${tokenId}`,
         description: `This is NFT with token ID ${tokenId}`,
-        image: `https://img.reservoir.tools/images/v2/base/khnv7QtJSsXhx7z5lxeoZ%2F0UzDinft2Nxc7bSzrtG7cdjwga57gi4LydIeO1GfuCybsHMIUPLDStwl2rwzyaA3ZwDAtiuSfANKIZeCy5Mku10kaksDoRiIWig31xE3DVw48fCFMrueu3l2wCL%2FabT2HoHl4ol5%2FSqd6I5kKwo7Acvo0rPTLYSj%2FjxiOgGQ0t?width=250`,
+        image: `	data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…AQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEB//Z`,
         attributes: []
       };
       
@@ -118,7 +118,7 @@ export async function GET(request, context) {
         details: error.message || 'Unknown error',
         name: `Error NFT #${tokenId}`,
         description: `Error retrieving metadata for token ID ${tokenId}`,
-        image: `https://img.reservoir.tools/images/v2/base/khnv7QtJSsXhx7z5lxeoZ%2F0UzDinft2Nxc7bSzrtG7cdjwga57gi4LydIeO1GfuCybsHMIUPLDStwl2rwzyaA3ZwDAtiuSfANKIZeCy5Mku10kaksDoRiIWig31xE3DVw48fCFMrueu3l2wCL%2FabT2HoHl4ol5%2FSqd6I5kKwo7Acvo0rPTLYSj%2FjxiOgGQ0t?width=250`
+        image: `https://img.freepik.com/free-psd/number-illustrati…ated_23-2151463630.jpg?semt=ais_hybrid&w=740&q=80`
       }
     );
   } finally {
