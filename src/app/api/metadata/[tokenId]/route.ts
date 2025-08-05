@@ -16,8 +16,13 @@ const getRedisClient = async () => {
 };
 
 export async function GET(request, context) {
-  const tokenId = context.params.tokenId;
-  console.log('요청된 tokenId:', tokenId);
+  const params = await context.params;
+  let tokenId = params.tokenId;
+  if (tokenId.endsWith('.json')) {
+    tokenId = tokenId.replace('.json', '');
+  }
+  console.log('요청(정제)된 tokenId:', tokenId);
+
   
   let redisClient;
   
