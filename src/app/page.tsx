@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import React from 'react';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -69,7 +70,6 @@ export default function Home() {
     }
   };
   
-
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>NFT Metadata Generator</h1>
@@ -136,7 +136,8 @@ export default function Home() {
   );
 }
 
-const styles = {
+// 스타일 객체에 명시적인 타입 지정
+const styles: Record<string, React.CSSProperties> = {
   container: {
     padding: '20px',
     maxWidth: '600px',
@@ -147,19 +148,19 @@ const styles = {
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },
   title: {
-    textAlign: 'center',
+    textAlign: 'center' as 'center', // 명시적 리터럴 타입 지정
     marginBottom: '20px',
     fontSize: '24px',
     color: '#333',
   },
   form: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as 'column', // 명시적 리터럴 타입 지정
     gap: '15px',
   },
   formGroup: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as 'column', // 명시적 리터럴 타입 지정
   },
   label: {
     fontSize: '16px',
@@ -179,7 +180,7 @@ const styles = {
     borderRadius: '4px',
     border: '1px solid #ccc',
     outline: 'none',
-    resize: 'none',
+    resize: 'none' as 'none', // 명시적 리터럴 타입 지정
     height: '100px',
   },
   button: {
@@ -213,8 +214,8 @@ const styles = {
     color: '#333',
   },
   jsonContent: {
-    whiteSpace: 'pre-wrap',
-    wordWrap: 'break-word',
+    whiteSpace: 'pre-wrap' as 'pre-wrap', // 명시적 리터럴 타입 지정
+    wordWrap: 'break-word' as 'break-word', // 명시적 리터럴 타입 지정
     fontSize: '14px',
     color: '#555',
   },
@@ -242,15 +243,3 @@ const styles = {
     textDecoration: 'none',
   },
 };
-
-
-
-
-
-
-
-// import Home from './pages/api/index';
-
-// export default function Page() {
-//   return <Home />;
-// }
