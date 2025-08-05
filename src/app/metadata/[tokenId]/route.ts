@@ -44,7 +44,7 @@ export async function GET(request, { params }) {
   const metadata = {
     name: `NFT #${tokenId}`,
     description: `This is NFT number ${tokenId}`,
-    image: `https://nft-metadata-generator.vercel.app/images/${tokenId}.png`,
+    image: `https://i.pinimg.com/736x/24/34/e7/2434e795df14398301e817392da2dbc2.jpg`,
     attributes: [
       {
         trait_type: "Rarity",
