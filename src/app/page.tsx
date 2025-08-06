@@ -32,7 +32,7 @@ export default function Home() {
       setTokenId(newTokenId);
 
       // URL 생성
-      const newUrl = `/api/metadata/${newTokenId}`;
+      const newUrl = `/api/metadata/${newTokenId}.json`;
 
       // 데이터 저장
       setSubmittedData((prevData) => [
@@ -77,7 +77,7 @@ export default function Home() {
     <div style={styles.container}>
       {/* 컨트랙트 주소 정보 - 필요할 때 주석 해제하세요 */}
       <div style={styles.contractAddressContainer}>
-        <p style={styles.contractAddressLabel}>컨트랙트 주소:</p>
+        <p style={styles.contractAddressLabel}>컨트랙트 주소</p>
         <p style={styles.contractAddress}>0xCD8DA4F6E38aF1E0087bdf6dBbF88Bf484626c34</p>
       </div>
       

@@ -126,7 +126,7 @@ export async function GET(request, context) {
         const defaultMetadata = {
           name: `NFT #${normalizedTokenId}`,
           description: `Invalid metadata format for token ID ${normalizedTokenId}`,
-          image: `data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…7iyNsMbIoxZjW2HQDRI3n0v8AFCF2q8GAyRrbjUhCEJRD/9k=`,
+          image: `https://i.pinimg.com/736x/0f/34/5c/0f345c86de08d259f99f6e24da0b28ab.jpg`,
           error: "Original metadata was not valid JSON"
         };
         
@@ -138,8 +138,7 @@ export async function GET(request, context) {
       const defaultMetadata = {
         name: `NFT #${normalizedTokenId}`,
         description: `This is NFT with token ID ${normalizedTokenId}`,
-        image: `data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…AQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEB//Z`,
-        attributes: []
+        image: `https://i.pinimg.com/736x/0f/34/5c/0f345c86de08d259f99f6e24da0b28ab.jpg`,
       };
       
       return createJsonFileResponse(defaultMetadata);
@@ -152,7 +151,7 @@ export async function GET(request, context) {
         details: error.message || 'Unknown error',
         name: `Error NFT #${normalizedTokenId}`,
         description: `Error retrieving metadata for token ID ${normalizedTokenId}`,
-        image: `https://img.freepik.com/free-psd/number-illustrati…ated_23-2151463630.jpg?semt=ais_hybrid&w=740&q=80`
+        image: `https://i.pinimg.com/736x/0f/34/5c/0f345c86de08d259f99f6e24da0b28ab.jpg`
       }
     );
   } finally {
