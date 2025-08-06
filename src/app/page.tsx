@@ -14,9 +14,6 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 고유 token_id 생성 (0번부터 시작)
-    const newTokenId = submittedData.length + 1; // 1번부터 시작하도록 수정
-
     // 입력된 데이터를 JSON 형태로 생성
     const metadata = {
       name,
@@ -26,27 +23,31 @@ export default function Home() {
 
     // JSON 데이터를 화면에 출력
     setGeneratedJson(JSON.stringify(metadata, null, 2));
-    setTokenId(newTokenId);
 
-    // URL 생성 (올바른 API 경로로 수정)
-    const newUrl = `/api/metadata/${newTokenId}`;
+    // JSON 파일 생성 요청 및 서버에서 할당된 tokenId 받기
+    const result = await createJsonFile(metadata);
+    
+    if (result && result.tokenId) {
+      const newTokenId = result.tokenId;
+      setTokenId(newTokenId);
 
-    // 데이터 저장
-    setSubmittedData((prevData) => [
-      ...prevData,
-      { id: newTokenId, url: newUrl, json: metadata },
-    ]);
+      // URL 생성
+      const newUrl = `/api/metadata/${newTokenId}`;
 
-    // JSON 파일 생성 요청
-    await createJsonFile(newTokenId, metadata);
+      // 데이터 저장
+      setSubmittedData((prevData) => [
+        ...prevData,
+        { id: newTokenId, url: newUrl, json: metadata },
+      ]);
 
-    // 입력값 초기화
-    setName('');
-    setDescription('');
-    setImage('');
+      // 입력값 초기화
+      setName('');
+      setDescription('');
+      setImage('');
+    }
   };
 
-  const createJsonFile = async (tokenId: number, metadata: object) => {
+  const createJsonFile = async (metadata: object) => {
     try {
       console.log('Sending request to:', '/api/create-json'); // 디버깅용
       const response = await fetch('/api/create-json', {
@@ -54,7 +55,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ tokenId, metadata }),
+        body: JSON.stringify({ metadata }),
       });
   
       if (!response.ok) {
@@ -65,8 +66,10 @@ export default function Home() {
       
       const result = await response.json();
       console.log('Success:', result);
+      return result; // 서버 응답 전체 반환
     } catch (error) {
       console.error('Error creating JSON file:', error);
+      return null;
     }
   };
   
@@ -139,11 +142,10 @@ export default function Home() {
         </div>
       )}
     </div>
-    
   );
 }
 
-// 스타일 객체에 명시적인 타입 지정
+// 스타일 객체는 기존과 동일하게 유지
 const styles: Record<string, React.CSSProperties> = {
   container: {
     padding: '20px',
