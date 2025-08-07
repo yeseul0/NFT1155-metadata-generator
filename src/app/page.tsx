@@ -78,7 +78,7 @@ export default function Home() {
       {/* 컨트랙트 주소 정보 - 필요할 때 주석 해제하세요 */}
       <div style={styles.contractAddressContainer}>
         <p style={styles.contractAddressLabel}>컨트랙트 주소</p>
-        <p style={styles.contractAddress}>아직 비공!!</p>
+        <p style={styles.contractAddress}>0x52E285D031246af8A273247487c732e1d0E70939</p>
       </div>
       
       <h1 style={styles.title}>NFT Metadata Generator</h1>
